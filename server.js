@@ -36,10 +36,12 @@ app.use("/api/v1/product", productRoute)
 //     res.send("<h1>Welcome to ecommerce app</h1>");
 // });
 
-app.use("*",function(req,res){
-    res.sendFile(path.join(__dirname,"./client/build/index.html"))
-
-})
+app.get('*', function (req, res) {
+    const index = path.join(__dirname, './client/build/index.html');
+    
+    res.sendFile(index);
+    
+  });
 
 app.listen(PORT, () => {
     console.log("running ")
