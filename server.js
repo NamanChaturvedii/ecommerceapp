@@ -24,7 +24,7 @@ const __dirname= path.dirname(__filename);
 app.use(cors())
 app.use(express.json())
 app.use(morgan("dev"))
-app.use(express.static(path.join(__dirname,"./client/build")))
+app.use(express.static("./client"));
 
 app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1/category", catagoryRoute)
@@ -37,10 +37,7 @@ app.use("/api/v1/product", productRoute)
 // });
 
 app.get('*', function (req, res) {
-    const index = path.join(__dirname, './client/build/index.html');
-    
-    res.sendFile(index);
-    
+    res.sendFile("./client/index.html"))
   });
 
 app.listen(PORT, () => {
